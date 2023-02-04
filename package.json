@@ -1,0 +1,42 @@
+{
+  "name": "acquirum-backend",
+  "version": "1.0.0",
+  "description": "Acquirum Backend API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node bin/server.js",
+    "start:dev": "nodemon bin/server.js",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.2",
+    "http-errors": "^2.0.0",
+    "joi": "^17.6.1",
+    "jsonwebtoken": "^8.5.1",
+    "luxon": "^3.1.1",
+    "nanoid": "^4.0.0",
+    "swagger-ui-express": "^4.5.0",
+    "mongoose": "^6.6.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "mongodb": "^4.10.0",
+    "morgan": "1.10.0",
+    "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dairedo7/acquirum-backend.git"
+  },
+  "author": "Vladyslav Svitana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dairedo7/acquirum-backend/issues"
+  },
+  "homepage": "https://github.com/dairedo7/acquirum-backend#readme"
+}
