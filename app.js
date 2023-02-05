@@ -8,6 +8,13 @@ const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 app.use(logger(formatsLogger));
 app.use(cors());
+app.use(express.json());
+
+const usersRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
+
+app.use('/users', usersRoutes);
+app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.send('The server has been started');
