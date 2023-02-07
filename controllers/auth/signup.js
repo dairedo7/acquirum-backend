@@ -25,7 +25,7 @@ const signup = async (req, res) => {
   };
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '30d' });
-  await userServices.findUserAndUpdate(currentUser._id, token);
+  await userServices.findUserAndUpdateToken(currentUser._id, token);
 
   res
     .cookie('access_token', token, {

@@ -21,11 +21,11 @@ const UserSchema = new Schema(
     },
     followers: {
       type: Array,
-      default: [],
+      defaultValue: [],
     },
     following: {
       type: Array,
-      default: [],
+      defaultValue: [],
     },
     description: {
       type: String,

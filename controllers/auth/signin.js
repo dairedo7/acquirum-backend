@@ -8,6 +8,10 @@ const { SECRET_KEY } = process.env;
 const signIn = async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    throw new Unauthorized('You need to fill out both email and password fields!');
+  }
+
   const user = await userServices.findUserByEmail(email);
 
   if (!user) {
@@ -27,9 +31,10 @@ const signIn = async (req, res) => {
   const payload = {
     id: user._id,
   };
+
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '30d' });
 
-  await userServices.findUserAndUpdate(user._id, token);
+  await userServices.findUserAndUpdateToken(user._id, token);
   res
     .cookie('access_token', token, {
       httpOnly: true,
