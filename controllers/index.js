@@ -6,4 +6,10 @@ module.exports = {
   removeUser: require('./users/removeUser'),
   followUser: require('./users/followUser'),
   unFollowUser: require('./users/unFollowUser'),
+  addPost: require('./post/addPost'),
+  deletePost: require('./post/deletePost'),
+  likeOrDislike: require('./post/likeOrDislike'),
+  getAllPosts: require('./post/getAllPosts'),
+  getUserPosts: require('./post/getUserPosts'),
+  getExplorePosts: require('./post/getExplorePosts'),
 };

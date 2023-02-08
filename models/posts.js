@@ -11,7 +11,7 @@ const PostSchema = new Schema(
       required: true,
       max: 320,
     },
-    lies: {
+    likes: {
       type: Array,
       defaultValue: [],
     },
