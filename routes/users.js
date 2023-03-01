@@ -6,7 +6,7 @@ const router = express.Router();
 //Get user
 router.get('/find/:id', wrapper(getUser));
 
-//Updated user
+//Update user
 router.put('/:id', verifyToken, wrapper(updateUser));
 
 //Delete user

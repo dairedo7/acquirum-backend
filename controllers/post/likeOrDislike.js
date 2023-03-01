@@ -4,7 +4,7 @@ const { getPostById, addLike, removeLike } = postServices;
 
 const likeOrDislike = async (req, res) => {
   const post = await getPostById(req.params.id);
-  const currentUserId = req.user.id;
+  const currentUserId = req.body.id;
 
   if (!post.likes.includes(currentUserId)) {
     await addLike(post.id, currentUserId);

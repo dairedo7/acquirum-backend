@@ -7,7 +7,7 @@ const removeUser = async (req, res) => {
     await postServices.deleteAllPosts(req.params.id);
     res.status(200).json({ message: 'User has been deleted' });
   } else {
-    throw new Forbidden('User cannot be deleted');
+    res.status(403).send({ message: 'Forbidden: User cannot be deleted' });
   }
 };
 

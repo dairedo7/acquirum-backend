@@ -5,6 +5,11 @@ const findUserByEmail = async (email) => {
   return findUserByEmail;
 };
 
+const findUserByUsername = async (username) => {
+  const findUserByName = await User.findOne({ username });
+  return findUserByName;
+};
+
 const findUserById = async (id, token) => {
   const findUserById = await User.findOne({ _id: id }, { token });
   return findUserById;
@@ -114,4 +119,5 @@ module.exports = {
   removeFromFollowing,
   findUserAndUpdate,
   findUserAndUpdateToken,
+  findUserByUsername,
 };

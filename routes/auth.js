@@ -8,6 +8,6 @@ router.post('/signup', wrapper(signup));
 
 router.post('/signin', wrapper(signin));
 
-router.post('/signin', (req, res) => {});
+// router.post('/signin', (req, res) => {});
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, SchemaTypes, model } = require('mongoose');
 
 const UserSchema = new Schema(
   {
@@ -27,9 +27,15 @@ const UserSchema = new Schema(
       type: Array,
       defaultValue: [],
     },
-    description: {
+    about: {
       type: String,
     },
+    posts: [
+      {
+        type: SchemaTypes.ObjectId,
+        ref: 'Post',
+      },
+    ],
   },
   { timestamps: true }
 );

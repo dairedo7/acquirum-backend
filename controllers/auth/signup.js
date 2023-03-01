@@ -35,10 +35,7 @@ const signup = async (req, res) => {
     .json({
       status: 'success',
       code: 201,
-      username,
-      email,
-      _id: currentUser._id,
-      token,
+      data: { username, email, _id: currentUser._id, token },
     });
 };
 

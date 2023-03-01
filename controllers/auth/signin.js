@@ -6,13 +6,13 @@ const { userServices } = require('../../services');
 const { SECRET_KEY } = process.env;
 
 const signIn = async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  if (!email || !password) {
+  if (!username || !password) {
     throw new Unauthorized('You need to fill out both email and password fields!');
   }
 
-  const user = await userServices.findUserByEmail(email);
+  const user = await userServices.findUserByUsername(username);
 
   if (!user) {
     throw new Unauthorized('This user does not exist');
@@ -44,7 +44,7 @@ const signIn = async (req, res) => {
       code: 200,
       data: {
         token,
-        email,
+        username,
         name,
         _id: user._id,
       },

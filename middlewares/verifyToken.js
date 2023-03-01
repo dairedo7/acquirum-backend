@@ -3,9 +3,11 @@ const { Unauthorized, Forbidden } = require('http-errors');
 
 const verifyToken = (req, res, next) => {
   const token = req.cookies.access_token;
-  if (!token) throw new Unauthorized('You are not authenticated');
+  const { access_token } = req.headers;
 
-  jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
+  if (!token && !access_token) throw new Unauthorized('You are not authenticated');
+
+  jwt.verify(token || access_token, process.env.SECRET_KEY, (err, user) => {
     if (err) throw new Forbidden('Token is invalid');
     req.user = user;
     next();
