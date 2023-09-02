@@ -9,23 +9,26 @@ const signIn = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    throw new Unauthorized('You need to fill out both email and password fields!');
+    res.status(401).send({ message: 'You need to fill out both email and password fields!' });
   }
 
   const user = await userServices.findUserByUsername(username);
 
   if (!user) {
-    throw new Unauthorized('This user does not exist');
+    console.log(4);
+    res.status(401).send({ message: 'This user does not exist' });
   }
 
   const name = user.username;
+  console.log(5);
+  console.log(name);
 
   const passCompare = bcrypt.compare(password, user.password);
 
   const result = await passCompare;
 
   if (!result) {
-    throw new Unauthorized('Wrong password');
+    res.status(401).send({ message: 'Wrong password' });
   }
 
   const payload = {
@@ -33,6 +36,8 @@ const signIn = async (req, res) => {
   };
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '30d' });
+
+  console.log(token);
 
   await userServices.findUserAndUpdateToken(user._id, token);
   res
@@ -43,9 +48,9 @@ const signIn = async (req, res) => {
       status: 'success',
       code: 200,
       data: {
-        token,
         username,
-        name,
+        following: user.following,
+        token,
         _id: user._id,
       },
     });

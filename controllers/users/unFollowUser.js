@@ -9,11 +9,10 @@ const unFollowUser = async (req, res) => {
   if (currentUser.following.includes(followingUser.id)) {
     await removeFromFollowers(followingUser.id, currentUser.id);
     await removeFromFollowing(currentUser.id, followingUser.id);
+    res.status(200).json({ message: 'Unfollowed the user' });
   } else {
-    res.status(403).send({ message: 'Forbidden: You are not following this user' });
+    res.status(403).json({ message: 'Forbidden: You are not following this user' });
   }
-
-  res.status(200).json({ message: 'Unfollowed the user' });
 };
 
 module.exports = unFollowUser;

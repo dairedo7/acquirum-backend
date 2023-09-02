@@ -10,7 +10,7 @@ const followUser = async (req, res) => {
     await updateUserFollowing(currentUser.id, followingUser.id);
     res.status(200).json({ message: 'Following the user' });
   } else {
-    res.status(403).send({ message: 'Forbidden: You are already following this user' });
+    res.status(403).json({ message: 'Forbidden: You are already following this user' });
   }
 };
 
